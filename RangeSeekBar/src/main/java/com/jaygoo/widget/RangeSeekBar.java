@@ -609,9 +609,6 @@ public class RangeSeekBar extends View {
                 touchDownX = getEventX(event);
                 touchDownY = getEventY(event);
 
-                Log.i("tag", String.format("x--->%s---percent--->%s---width--->%s---left--->%s----right---->%s----top-->%s---bottom--->%s",
-                        touchDownX, leftSB.currPercent,progressWidth, leftSB.left, leftSB.right, leftSB.top, leftSB.bottom));
-
                 if (seekBarMode == SEEKBAR_MODE_RANGE) {
 
                     canSlide = (isTouchPointInView(leftSB, touchDownX, touchDownY) || isTouchPointInView(rightSB, touchDownX, touchDownY));
