@@ -613,7 +613,7 @@ public class RangeSeekBar extends View {
 
                     canSlide = (isTouchPointInView(leftSB, touchDownX, touchDownY) || isTouchPointInView(rightSB, touchDownX, touchDownY));
 
-                    if (!canSlide) return true;
+                    if (!canSlide) return false;
 
                     if (getParent() != null) {
                         getParent().requestDisallowInterceptTouchEvent(true);
@@ -653,7 +653,7 @@ public class RangeSeekBar extends View {
                 return true;
             case MotionEvent.ACTION_MOVE:
 
-                if (!canSlide) return true;
+                if (!canSlide) return false;
 
                 float x = getEventX(event);
                 if ((seekBarMode == SEEKBAR_MODE_RANGE) && leftSB.currPercent == rightSB.currPercent) {
@@ -698,7 +698,7 @@ public class RangeSeekBar extends View {
                 changeThumbActivateState(true);
                 break;
             case MotionEvent.ACTION_CANCEL:
-                if (!canSlide) return true;
+                if (!canSlide) return false;
 
                 if (seekBarMode == SEEKBAR_MODE_RANGE) {
                     rightSB.setShowIndicatorEnable(false);
@@ -720,7 +720,7 @@ public class RangeSeekBar extends View {
                 changeThumbActivateState(false);
                 break;
             case MotionEvent.ACTION_UP:
-                if (!canSlide) return true;
+                if (!canSlide) return false;
 
                 if (verifyStepsMode() && stepsAutoBonding) {
                     float percent = calculateCurrentSeekBarPercent(getEventX(event));
